@@ -8,8 +8,8 @@ const {
 
 router.get('/', getAllAnalyses);
 
-router.get('/:id', getAnalysisById);
-
 router.get('/resume/:resumeId', getAnalysisByResume);
+
+router.get('/:id', getAnalysisById);
 
 module.exports = router;

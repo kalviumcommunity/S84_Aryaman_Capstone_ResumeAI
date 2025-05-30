@@ -17,4 +17,15 @@ const getAiById = async (req, res) => {
   }
 };
 
-module.exports = {getAllAi, getAiById };
+// POST a new AI entry
+const createAiEntry = async (req, res) => {
+  try {
+    const newAi = new Ai(req.body);
+    const savedAi = await newAi.save();
+    res.status(201).json(savedAi);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllAi, getAiById, createAiEntry };

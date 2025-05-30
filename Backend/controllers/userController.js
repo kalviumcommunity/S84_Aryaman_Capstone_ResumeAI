@@ -17,4 +17,15 @@ const getUserById = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers,getUserById };
+// POST create a new user
+const createUser = async (req, res) => {
+  try {
+    const newUser = new User(req.body);
+    const savedUser = await newUser.save();
+    res.status(201).json(savedUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllUsers, getUserById, createUser };

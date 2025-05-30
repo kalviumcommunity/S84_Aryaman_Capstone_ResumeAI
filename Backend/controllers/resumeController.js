@@ -17,4 +17,15 @@ const getResumeById = async (req, res) => {
   }
 };
 
-module.exports = { getAllResumes,getResumeById };
+// POST create a new resume
+const createResume = async (req, res) => {
+  try {
+    const newResume = new Resume(req.body);
+    const savedResume = await newResume.save();
+    res.status(201).json(savedResume);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllResumes, getResumeById, createResume };

@@ -17,4 +17,4 @@ const getAiById = async (req, res) => {
   }
 };
 
-module.exports = { getAllAi, getAiById };
+module.exports = {getAllAi, getAiById };

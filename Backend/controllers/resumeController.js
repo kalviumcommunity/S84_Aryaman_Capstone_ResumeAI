@@ -17,4 +17,4 @@ const getResumeById = async (req, res) => {
   }
 };
 
-module.exports = { getAllResumes, getResumeById };
+module.exports = { getAllResumes,getResumeById };

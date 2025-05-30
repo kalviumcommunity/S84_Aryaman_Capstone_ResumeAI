@@ -1,4 +1,5 @@
 const Ai = require("../models/AiSchema");
+
 const getAllAi = async (req, res) => {
   try {
     const aiData = await Ai.find();
@@ -7,6 +8,7 @@ const getAllAi = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 const getAiById = async (req, res) => {
   try {
     const ai = await Ai.findById(req.params.id);
@@ -17,7 +19,6 @@ const getAiById = async (req, res) => {
   }
 };
 
-// POST a new AI entry
 const createAiEntry = async (req, res) => {
   try {
     const newAi = new Ai(req.body);
@@ -28,4 +29,18 @@ const createAiEntry = async (req, res) => {
   }
 };
 
-module.exports = { getAllAi, getAiById, createAiEntry };
+const updateAiEntry = async (req, res) => {
+  try {
+    const updatedAi = await Ai.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!updatedAi) return res.status(404).json({ message: "AI entry not found" });
+    res.json(updatedAi);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllAi, getAiById, createAiEntry, updateAiEntry };

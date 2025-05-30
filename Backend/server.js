@@ -5,8 +5,6 @@ const aiRoutes = require("./routes/aiRoutes");
 const resumeRoutes = require("./routes/resumeRoutes");
 const userRoutes = require("./routes/userRoutes");
 
-app.use(express.json());
-
 
 app.use(express.json());
 app.use("/api/ai",aiRoutes);

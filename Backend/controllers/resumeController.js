@@ -1,4 +1,5 @@
 const Resume = require("../models/ResumeSchema");
+
 const getAllResumes = async (req, res) => {
   try {
     const resumes = await Resume.find();
@@ -7,6 +8,7 @@ const getAllResumes = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 const getResumeById = async (req, res) => {
   try {
     const resume = await Resume.findById(req.params.id);
@@ -17,7 +19,6 @@ const getResumeById = async (req, res) => {
   }
 };
 
-// POST create a new resume
 const createResume = async (req, res) => {
   try {
     const newResume = new Resume(req.body);
@@ -28,4 +29,14 @@ const createResume = async (req, res) => {
   }
 };
 
-module.exports = { getAllResumes, getResumeById, createResume };
+const updateResume = async (req, res) => {
+  try {
+    const updatedResume = await Resume.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedResume) return res.status(404).json({ message: "Resume not found" });
+    res.json(updatedResume);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllResumes, getResumeById, createResume, updateResume };

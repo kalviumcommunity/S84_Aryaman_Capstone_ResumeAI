@@ -1,4 +1,5 @@
 const User = require("../models/UserSchema");
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -7,6 +8,7 @@ const getAllUsers = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -17,7 +19,6 @@ const getUserById = async (req, res) => {
   }
 };
 
-// POST create a new user
 const createUser = async (req, res) => {
   try {
     const newUser = new User(req.body);
@@ -28,4 +29,18 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getUserById, createUser };
+const updateUser = async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!updatedUser) return res.status(404).json({ message: "User not found" });
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllUsers, getUserById, createUser, updateUser };

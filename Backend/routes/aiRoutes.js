@@ -1,15 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {
-  getAllAnalyses,
-  getAnalysisById,
-  getAnalysisByResume
-} = require('../controllers/aiController');
+const {getAllAi, getAiById } = require("../controllers/aiController");
 
-router.get('/', getAllAnalyses);
-
-router.get('/resume/:resumeId', getAnalysisByResume);
-
-router.get('/:id', getAnalysisById);
-
+router.get("/",getAllAi);
+router.get("/:id", getAiById);
 module.exports = router;

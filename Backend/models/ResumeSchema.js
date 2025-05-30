@@ -9,15 +9,16 @@ const ResumeSchema = new mongoose.Schema({
       linkedin: { type: String },
       github: { type: String }
     },
-    education: [
-      {
-        institution: String,
-        degree: String,
-        startYear: String,
-        endYear: String,
-        required:true
-      }
-    ],
+    education: {
+  type: [
+    {
+      institution: { type: String, required: true },
+      degree: { type: String, required: true },
+      startYear: { type: String, required: true },
+      endYear: { type: String, required: true }
+    }
+  ]
+},
     experience: [
       {
         company: String,

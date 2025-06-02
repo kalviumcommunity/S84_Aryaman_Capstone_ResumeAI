@@ -427,3 +427,78 @@ body {
     flex-wrap: wrap;
     justify-content: center;
   }
+  .footer-nav a {
+    color: #FF66A3;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  }
+  
+  .footer-nav a:hover {
+    text-decoration: none;
+    color: #FFD700; 
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+  }
+  
+  .footer-copyright {
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+  
+  @keyframes colorShift {
+    0% { color: #565FFF; }   
+    25% { color: #FF0C8F; }  
+    50% { color: #FFD700; }  
+    75% { color: #00FFA2; } 
+    100% { color: #565FFF; } 
+  }
+  
+  .footer-glow {
+    font-weight: bold;
+    font-size: 1.1rem;
+    animation: colorShift 4s infinite linear;
+  }
+  
+  .footer .social-icons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .footer .social-icons a {
+    color: #E3E6E8;
+    font-size: 1.4rem;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .footer .social-icons a:hover {
+    color: #FF0C8F;
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      font-size: 0.9rem;
+      padding: 25px 15px;
+    }
+  
+    .footer-nav {
+      gap: 15px;
+    }
+  
+    .footer .social-icons a {
+      font-size: 1.2rem;
+    }
+  }
+.logo-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-top: 2px; 
+}
+
+.logo {
+  width: 120px;  
+  height: auto;
+}

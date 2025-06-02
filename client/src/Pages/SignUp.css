@@ -295,3 +295,85 @@ html, body, #root {
 .redirect-button:active {
   transform: scale(0.97);
 }
+.social-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s ease-in-out;
+  color: #fff;
+}
+
+.google-button {
+  background-color: #db4437;
+}
+
+.google-button:hover {
+  background-color: #c1351d;
+  transform: scale(1.1);
+}
+
+.github-button {
+  background-color: #333;
+}
+
+.github-button:hover {
+  background-color: #1b1f23;
+  transform: scale(1.1);
+}
+
+.btn-outline-light {
+  border: 1px solid #f0f0f0 !important; 
+  color: #f0f0f0 !important;
+  background-color: transparent !important; 
+  font-weight: 500 !important; /* Bold text */
+  padding: 10px 20px !important; 
+  border-radius: 50px !important;
+  transition: all 0.3s ease !important; 
+}
+
+.btn-outline-light:hover {
+  background-color: #f0f0f0 !important;
+  color: #8a3636 !important; 
+  border-color: #852a2a !important; 
+}
+
+.btn-outline-light:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5) !important; 
+}
+
+.btn-back-home {
+  padding: 12px 24px !important;
+  font-size: 1rem !important;
+  border-radius: 50px !important;
+  background-color: #1a1a1a !important; 
+  color: #f0f0f0 !important; 
+  transition: all 0.3s ease !important; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+.btn-back-home:hover {
+  background-color: #333 !important; 
+  color: #fff !important;
+  border-color: #333 !important; 
+  transform: translateY(-2px) !important; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2) !important; 
+}
+
+.btn-back-home:focus {
+  outline: none !important; 
+  box-shadow: 0 0 0 0.3rem rgba(38, 143, 255, 0.5) !important; 
+  border-color: #38a1db !important; 
+}
+.btn-back-home:active {
+  background-color: #2c8ea6 !important; 
+  color: #fff !important; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important; 
+  transform: translateY(2px) !important; 
+}
+

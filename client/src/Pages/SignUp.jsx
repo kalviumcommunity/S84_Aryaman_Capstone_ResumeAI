@@ -3,7 +3,7 @@ import background from "../assets/background.png";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "./SignUp.css";
+//import "./SignUp.css";
 import axios from "axios";
 
 const SignUp = ({ onRedirect, onShowSearch, onShowPremium, onShowAbout }) => {

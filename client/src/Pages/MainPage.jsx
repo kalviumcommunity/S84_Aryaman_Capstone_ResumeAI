@@ -216,4 +216,6 @@ const TypingEffect = () => {
     </p>
   );
 };
+
+
 export default MainPage;

@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import MainPage from "./Pages/MainPage";
 import SignUp from "./Pages/SignUp";
-import AboutUs from "./Pages/AboutUs.jsx";
-import PremiumPage from "./Pages/PremiumPage.jsx";
-import Search from "./Pages/search.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 

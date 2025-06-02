@@ -1,19 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./MainPage.css";
-import logo from "../assets/resumeai-logo.png";
-import {
-  FaRobot,
-  FaFileAlt,
-  FaEdit,
-  FaSearch,
-  FaDownload,
-  FaPenNib,
-  FaGlobe,
-  FaChartLine,
-} from "react-icons/fa";
-import TypingEffect from "./TypingEffect"; 
+import logo from "../assets/resumeai-logo.png"
+import { FaRobot, FaFileAlt, FaEdit, FaSearch, FaDownload, FaPenNib, FaGlobe, FaChartLine } from "react-icons/fa";
 
-function MainPage({ onGetStarted, onShowAbout, onShowPremium, onShowSearch }) {
+function MainPage({ onGetStarted, onShowAbout, onShowPremium, onShowSearch}) {
   useEffect(() => {
     const testimonials = document.querySelector(".testimonial-container");
 
@@ -57,14 +47,14 @@ function MainPage({ onGetStarted, onShowAbout, onShowPremium, onShowSearch }) {
       </nav>
 
       <header className="hero">
-        <div className="logo-container">
-          <img src={logo} alt="ResumeAI Logo" className="logo" />
-        </div>
+      <div className="logo-container">
+        <img src={logo} alt="ResumeAI Logo" className="logo" />
+      </div>
 
         <div className="circle big-circle"></div>
         <div className="circle small-circle left"></div>
         <div className="circle small-circle right"></div>
-
+        
         <h1>
           Create a Job-Winning <span className="gradient-text">Resume</span> in
           Seconds with AI!
@@ -132,12 +122,98 @@ function MainPage({ onGetStarted, onShowAbout, onShowPremium, onShowSearch }) {
               <span className="testimonial-author">— Alex J.</span>
             </div>
 
+            <div className="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah M." className="testimonial-img" />
+              <div className="stars">⭐⭐⭐⭐⭐</div>
+              <p className="testimonial-text">“Super easy to use, and the templates are amazing!”</p>
+              <span className="testimonial-author">— Sarah M.</span>
+            </div>
+
+            <div className="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="John D." className="testimonial-img" />
+              <div className="stars">⭐⭐⭐⭐⭐</div>
+              <p className="testimonial-text">“A game-changer for resume building. Highly recommended!”</p>
+              <span className="testimonial-author">— John D.</span>
+            </div>
+            <div className="testimonial-card">
+  <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Priya S." className="testimonial-img" />
+  <div className="stars">⭐⭐⭐⭐⭐</div>
+  <p className="testimonial-text">“I created my resume in just minutes. Super efficient and clean!”</p>
+  <span className="testimonial-author">— Priya S.</span>
+</div>
+
+<div className="testimonial-card">
+  <img src="https://randomuser.me/api/portraits/men/19.jpg" alt="Kevin L." className="testimonial-img" />
+  <div className="stars">⭐⭐⭐⭐⭐</div>
+  <p className="testimonial-text">“The AI suggestions helped me stand out from other applicants.”</p>
+  <span className="testimonial-author">— Kevin L.</span>
+</div>
+
+<div className="testimonial-card">
+  <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Emily R." className="testimonial-img" />
+  <div className="stars">⭐⭐⭐⭐⭐</div>
+  <p className="testimonial-text">“A must-have tool for anyone applying for jobs in 2025.”</p>
+  <span className="testimonial-author">— Emily R.</span>
+</div>
+
+<div className="testimonial-card">
+  <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Mohamed A." className="testimonial-img" />
+  <div className="stars">⭐⭐⭐⭐⭐</div>
+  <p className="testimonial-text">“Sleek design, easy-to-use interface, and top-notch results!”</p>
+  <span className="testimonial-author">— Mohamed A.</span>
+</div>
+
+<div className="testimonial-card">
+  <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Sophie B." className="testimonial-img" />
+  <div className="stars">⭐⭐⭐⭐⭐</div>
+  <p className="testimonial-text">“Landed two interviews within a week of updating my resume here!”</p>
+  <span className="testimonial-author">— Sophie B.</span>
+</div>
+
           </div>
           <button className="scroll-btn" onClick={scrollRight}>▶</button>
         </div>
       </section>
+
+      <footer className="footer">
+        <div className="footer-content">
+          <p className="footer-glow">Empowering Resumes with AI</p>
+
+          <div className="footer-nav">
+            <a href="#">Contact</a>
+            <a href="#">FAQ</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+
+          <p className="footer-copyright">
+            © 2025 ResumeAI. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
+const TypingEffect = () => {
+  const text = "Let AI optimize your resume for maximum impact.";
+  const [displayText, setDisplayText] = useState("");
+  const [index, setIndex] = useState(0);
 
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText((prev) => prev + text[index]);
+        setIndex(index + 1);
+      }, 65);
+      return () => clearTimeout(timeout);
+    }
+  }, [index, text]);
+
+  return (
+    <p className="animated-text">
+      <span>{displayText}</span>
+      <span className="cursor">|</span>
+    </p>
+  );
+};
 export default MainPage;

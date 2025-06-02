@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+.premium-page {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+.plan-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FF0C8F;
+}
+
+.price .duration {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #cbd5e1;
+  margin-left: 4px;
+}
+.badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge.popular {
+  background-color: #565FFF;
+  color: white;
+}
+.badge.saver {
+  background-color: #FFD700;
+  color: #0f172a;
+}
+.card {
+  position: relative;
+}
+.premium-page .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e293b;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.premium-page .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #B794F4;
+}
+.premium-page .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+.premium-page .nav-links li {
+  cursor: pointer;
+  color: #e2e8f0;
+  transition: color 0.3s ease;
+}
+
+.premium-page .nav-links li:hover {
+  color: #FF0C8F;
+}
+
+.premium-page .nav-links .active {
+  color: #ffffff;
+}
+.premium-page .premium-header {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+}
+.premium-page .premium-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.premium-page .premium-header h1 span:first-child {
+  color: #ffffff;
+}
+.premium-page .premium-header .gradient-text {
+  background: linear-gradient(135deg, #565FFF, #FF0C8F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.premium-page .premium-header p {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+}
+.premium-page .premium-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.premium-page .card {
+  background-color: #1e293b;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+.premium-page .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+.premium-page .card.highlight {
+  border: 2px solid #FF0C8F;
+  background-color: #27364c;
+}
+.premium-page .card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.premium-page .price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #FF0C8F;
+}
+.premium-page ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  color: #ffffff;
+}
+.premium-page ul li {
+  margin: 0.5rem 0;
+  color: #ffffff;
+}
+.premium-page .btn {
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, #565FFF, #FF0C8F);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+.premium-page .btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}

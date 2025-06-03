@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MainPage from "./Pages/MainPage";
+import PremiumPage from "./Pages/PremiumPage";
 import SignUp from "./Pages/SignUp";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';

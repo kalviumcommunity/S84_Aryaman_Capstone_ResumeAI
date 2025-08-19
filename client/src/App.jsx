@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainPage from "./Pages/MainPage";
+import PremiumPage from "./Pages/PremiumPage";
 import SignUp from "./Pages/SignUp";
+import ResumeBuilder from "../pages/ResumeBuilder";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -10,6 +12,17 @@ function App() {
   const [showPremium, setShowPremium] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showBuilder, setShowBuilder] = useState(false);
+  const [showMyResumes, setShowMyResumes] = useState(false);
+  const [editingResume, setEditingResume] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setShowBuilder(true);
+      setShowSignUp(false);
+    }
+  }, []);
 
   const handleGetStarted = () => {
     setShowSignUp(true);
@@ -44,6 +57,28 @@ function App() {
     setShowAbout(false);
     setShowPremium(false);
     setShowSearch(false);
+    setShowBuilder(false);
+    setShowMyResumes(false);
+  };
+
+  const handleAuthSuccess = () => {
+    setShowBuilder(true);
+    setShowSignUp(false);
+    setShowAbout(false);
+    setShowPremium(false);
+    setShowSearch(false);
+  };
+
+  const openMyResumes = () => {
+    setShowMyResumes(true);
+    setShowBuilder(false);
+    setEditingResume(null);
+  };
+
+  const handleOpenResumeForEdit = (resume) => {
+    setEditingResume(resume || null);
+    setShowBuilder(true);
+    setShowMyResumes(false);
   };
 
   return (
@@ -54,7 +89,12 @@ function App() {
           onShowSearch={handleShowSearch}
           onShowPremium={handleShowPremium}
           onShowAbout={handleShowAbout}
+          onAuthSuccess={handleAuthSuccess}
         />
+      ) : showMyResumes ? (
+        <MyResumes onHome={handleShowHome} onOpenResume={handleOpenResumeForEdit} />
+      ) : showBuilder ? (
+        <ResumeBuilder onHome={handleShowHome} onOpenMyResumes={openMyResumes} initialResume={editingResume} clearInitial={() => setEditingResume(null)} />
       ) : showAbout ? (
         <AboutUs />
       ) : showPremium ? (

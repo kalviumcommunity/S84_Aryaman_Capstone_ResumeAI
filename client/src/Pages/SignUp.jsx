@@ -6,7 +6,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./SignUp.css";
 import axios from "axios";
 
-const SignUp = ({ onRedirect, onShowSearch, onShowPremium, onShowAbout }) => {
+const SignUp = ({ onRedirect, onShowSearch, onShowPremium, onShowAbout, onAuthSuccess }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -20,27 +20,66 @@ const SignUp = ({ onRedirect, onShowSearch, onShowPremium, onShowAbout }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validatePassword = (password) => {
+    // at least 8 chars, one uppercase, one lowercase, one number
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    return re.test(password);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    if (!validateEmail(formData.email)) {
+      alert("Please enter a valid email address.");
+      setLoading(false);
+      return;
+    }
+    if (!validatePassword(formData.password)) {
+      alert("Password must be at least 8 characters and include uppercase, lowercase, and a number.");
+      setLoading(false);
+      return;
+    }
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       setLoading(false);
       return;
     }
      try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        username: formData.username,
+      const response = await axios.post("http://localhost:5000/api/auth/register", {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
         email: formData.email,
         password: formData.password,
       });
-      console.log("User signed up:", response.data);
+      const { token, user } = response.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
       alert("Signup successful!");
+      if (onAuthSuccess) onAuthSuccess();
     } catch (error) {
-      console.error("Signup error:", error.response.data.message);
-      alert("Error signing up, please try again.");
+      const message = error?.response?.data?.message || error?.response?.data?.error || 'Error signing up';
+      if (message && message.toLowerCase().includes('already exists')) {
+        try {
+          const loginRes = await axios.post("http://localhost:5000/api/auth/login", {
+            email: formData.email,
+            password: formData.password,
+          });
+          const { token, user } = loginRes.data;
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(user));
+          alert("Welcome back! Logged in successfully.");
+          if (onAuthSuccess) onAuthSuccess();
+        } catch (loginErr) {
+          const loginMsg = loginErr?.response?.data?.message || loginErr?.response?.data?.error || 'Login failed';
+          alert(loginMsg);
+        }
+      } else {
+        alert(message);
+      }
     }
     setLoading(false);
   };

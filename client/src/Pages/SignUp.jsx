@@ -50,7 +50,7 @@ const SignUp = ({ onRedirect, onShowSearch, onShowPremium, onShowAbout, onAuthSu
       return;
     }
      try {
-      const response = await axios.post("https://s84-aryaman-capstone-resumeai-4.onrender.com/api/auth/register", {
+      const response = await axios.post("https://s84-aryaman-capstone-resumeai-1cwc.onrender.com/api/auth/register", {
         name: `${formData.firstName} ${formData.lastName}`.trim(),
         email: formData.email,
         password: formData.password,
@@ -64,7 +64,7 @@ const SignUp = ({ onRedirect, onShowSearch, onShowPremium, onShowAbout, onAuthSu
       const message = error?.response?.data?.message || error?.response?.data?.error || 'Error signing up';
       if (message && message.toLowerCase().includes('already exists')) {
         try {
-          const loginRes = await axios.post("https://s84-aryaman-capstone-resumeai-4.onrender.com/api/auth/login", {
+          const loginRes = await axios.post("https://s84-aryaman-capstone-resumeai-1cwc.onrender.com/api/auth/login", {
             email: formData.email,
             password: formData.password,
           });

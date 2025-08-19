@@ -10,6 +10,7 @@ const generateToken = (user) => {
   );
 };
 const registerUser = async (req, res) => {
+  console.log('hi');
   const { name, email, password } = req.body;
 
   try {
@@ -26,10 +27,12 @@ const registerUser = async (req, res) => {
       token,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };
 const loginUser = async (req, res) => {
+  console.log('hi');
   const { email, password } = req.body;
 
   try {
@@ -48,6 +51,7 @@ const loginUser = async (req, res) => {
       token,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };

@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db"); 
+const cors = require("cors");
 
 dotenv.config(); 
 
@@ -11,9 +12,15 @@ connectDB();
 const aiRoutes = require("./routes/aiRoutes");
 const resumeRoutes = require("./routes/resumeRoutes");
 const userRoutes = require("./routes/userRoutes");
-const authRoutes = require("./routes/authRoutes"); 
+const authRoutes = require("./routes/authRoutes");   
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://127.0.0.1:5173","https://resumeai-capstoneproject.netlify.app/"],
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the ResumeAI API. Use /api/auth, /api/users, /api/ai, or /api/resumes.");

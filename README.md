@@ -78,10 +78,10 @@ This tool helps **job seekers refine their resumes** and assists **recruiters in
 
 ---
 
-**Render Link** :- https://s84-aryaman-capstone-resumeai-4.onrender.com
+**Render Link** :- https://s84-aryaman-capstone-resumeai-1cwc.onrender.com
 
 
-**Netlify Link** :- https://airesume-capstoneproject.netlify.app/
+**Netlify Link** :- https://airesume-capstoneproject.netlify.app
 
 ---
 
@@ -92,6 +92,7 @@ This tool helps **job seekers refine their resumes** and assists **recruiters in
 🔗 [GitHub](https://github.com/aryamanhubb-22/)  
 
 If you like this project, don’t forget to ⭐ star the repository! 🚀
+
 
 
 

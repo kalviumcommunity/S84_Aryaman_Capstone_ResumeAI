@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./MainPage.css";
 import logo from "../assets/resumeai-logo.png"
+import MicButton from "../components/MicButton";
+
 import { FaRobot, FaFileAlt, FaEdit, FaSearch, FaDownload, FaPenNib, FaGlobe, FaChartLine } from "react-icons/fa";
 
 function MainPage({ onGetStarted, onShowAbout, onShowPremium, onShowSearch}) {
@@ -61,6 +63,7 @@ function MainPage({ onGetStarted, onShowAbout, onShowPremium, onShowSearch}) {
         </h1>
 
         <TypingEffect />
+          <MicButton />
 
         <button className="cta-button" onClick={onGetStarted}>
           Get Started
